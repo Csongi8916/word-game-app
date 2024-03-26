@@ -1,1 +1,4 @@
-<p>result-container works!</p>
+<div class="result-container">
+  <p *ngFor="let result of results">{{ result }}</p>
+  <p *ngIf="isEmpty">Nincs találat!</p>
+</div>

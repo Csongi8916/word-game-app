@@ -10,6 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class ControlContainerComponent implements OnInit {
 
   wordGameForm: FormGroup;
+  anagrams: string[] = [];
 
   constructor(private wordGameService: WordGameService) { }
   
@@ -21,8 +22,9 @@ export class ControlContainerComponent implements OnInit {
 
   onSubmit(): void {
     const word = this.wordGameForm.get('word')?.value;
-    const anagram = this.wordGameService.getAnagrams(word);
-    alert(anagram);
+    this.wordGameService.getAnagrams(word).subscribe((res: any) => {
+      this.anagrams = res.body.anagrams;
+      this.wordGameService.moveResults({ actualWord: word, words: this.anagrams });
+    });
   }
-
 }
