@@ -1,14 +1,16 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import { calcAnagram } from './anagram-service';
 
 const app = express();
 
-app.set('port', process.env.PORT || 4000);
-
 app.use(bodyParser.json());
 
-app.get('/anagramma', (req, res) => {
-  res.send('Endpoint test');
+app.get('/test/:word', (req, res) => {
+  const anagrams = calcAnagram(req.params.word);
+  res.status(200).json({
+    anagrams: anagrams
+  });
 });
 
-export default app;
+app.listen(3000);
