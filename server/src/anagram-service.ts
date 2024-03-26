@@ -5,7 +5,8 @@ const filePath = path.join(__dirname, '..', 'db', 'words.txt');
 
 export const calcAnagram = (sourceWord: string) => {
   console.log('Run calcAnagram()');
-  const words: string[] = readFile();
+  const rawWords = readFile();
+  const words: string[] = rawWords.toString().split('\n'); 
   const anagrams: string[] = words.filter((word: string) => {
     return isAnagram(sourceWord, word);
   });
