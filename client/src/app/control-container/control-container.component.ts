@@ -23,9 +23,9 @@ export class ControlContainerComponent implements OnInit {
   
   ngOnInit(): void {
     this.wordGameForm = new FormGroup({
-      anagramWord: new FormControl(null, [Validators.min(5), Validators.max(5)]),
-      sourceWord: new FormControl(null, [Validators.min(5), Validators.max(5)]),
-      destWord: new FormControl(null, [Validators.min(5), Validators.max(5)]),
+      anagramWord: new FormControl(null, [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
+      sourceWord: new FormControl(null, [Validators.required, Validators.min(5), Validators.max(5)]),
+      destWord: new FormControl(null, [Validators.required, Validators.min(5), Validators.max(5)]),
     });
   }
 

@@ -14,9 +14,17 @@
   }
 
   form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+
+    .user-controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .validation-results {
+      display: block;
+      color: red;
+    }
 
     label {
       margin-right: 10px;
@@ -44,10 +52,13 @@
       cursor: pointer;
       border-radius: 8px;
   
-      &:hover {
+      &:hover:enabled {
         color: #fff;
         background-color: transparent;
         background-image: linear-gradient(161deg, #0068FF 0%, #2B2B50 100%);
+      }
+      &:hover:disabled {
+        background-color: transparent;
       }
     }
   }
