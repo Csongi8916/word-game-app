@@ -1,0 +1,21 @@
+.result-container {
+  background-color: whitesmoke;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  width: 60vw;
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 50px;
+  padding: 30px;
+
+  .result-data {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .result-value {
+    margin: auto;
+    padding: 20px;
+    font-size: 20px;
+  }
+}

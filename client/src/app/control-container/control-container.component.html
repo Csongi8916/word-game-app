@@ -1,0 +1,25 @@
+<div class="form-container">
+  <h2>{{ title }}</h2>
+  <form [formGroup]="wordGameForm" (ngSubmit)="onSubmit()" class="form-group">
+    <div class="user-controls">
+      <ng-container *ngIf="!neededTarget">
+        <label for="word">Forrás szó:</label>
+        <input type="text" id="anagram-word" formControlName="anagramWord" class="form-control" />
+      </ng-container>
+      <ng-container *ngIf="neededTarget">
+        <label for="source-word">Forrás szó:</label>
+        <input type="text" id="source-word" formControlName="sourceWord" class="form-control word-chain-input" />
+        <label for="dest-word">Cél szó:</label>
+        <input type="text" id="dest-word" formControlName="targetWord" class="form-control word-chain-input" />
+      </ng-container>
+      <button class="btn btn-primary" type="submit">Keresés</button>
+    </div>
+    <div
+      *ngIf="wordGameForm.get('anagramWord')!.invalid && wordGameForm.touched && !neededTarget"
+      class="validation-results">
+      <p *ngIf="wordGameForm.get('anagramWord')?.errors['required']">This field is required!</p>
+      <p *ngIf="wordGameForm.get('anagramWord')?.errors['minlength']">The world have to contains min 5 letters!</p>
+      <p *ngIf="wordGameForm.get('anagramWord')?.errors['maxlength']">The world have to contains max 5 letters!</p>
+    </div>
+  </form>
+</div>
