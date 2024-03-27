@@ -1,8 +1,8 @@
 <div *ngIf="isAlreadyUsed" class="result-container">
-  <div *ngFor="let result of results">
+  <ng-container *ngFor="let result of results">
     <p class="result-value">
       {{ result }}
     </p>
-  </div>
+  </ng-container>
   <p *ngIf="isEmpty">Nincs találat!</p>
 </div>
