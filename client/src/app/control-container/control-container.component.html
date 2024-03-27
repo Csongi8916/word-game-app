@@ -1,9 +1,7 @@
-<form [formGroup]="wordGameForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
+<div class="form-container">
+  <form [formGroup]="wordGameForm" (ngSubmit)="onSubmit()" class="form-group">
     <label for="word">Anagramma:</label>
     <input type="text" id="word" formControlName="word" class="form-control" />
     <button class="btn btn-primary" type="submit">Keresés</button>
-  </div>
-</form>
-
-<lp-result-container></lp-result-container>
+  </form>
+</div>

@@ -12,13 +12,14 @@ export class ResultContainerComponent implements OnInit {
   @Input() actualWord: string;
   results: string[] = [];
   isEmpty: boolean = false;
+  isAlreadyUsed: boolean = false;
 
   constructor(private wordGameService: WordGameService) { }
 
   ngOnInit(): void {
     this.wordGameService.moveResultEmitter$.subscribe((results: Result) => {
       this.isEmpty = results.words.length === 0 ? true : false;
-      debugger;
+      this.isAlreadyUsed = true;
       if (this.actualWord !== results.actualWord) {
         this.actualWord = results.actualWord;
         this.results = results.words;
