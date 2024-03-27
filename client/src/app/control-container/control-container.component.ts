@@ -14,8 +14,8 @@ export class ControlContainerComponent implements OnInit {
 
   wordGameForm: FormGroup;
   anagramWord: string = '';
-  actualSrcWord: string = '';
-  actualDestWord: string = '';
+  sourceWord: string = '';
+  targetWord: string = '';
   anagrams: string[] = [];
   wordChains: string[] = [];
 
@@ -25,7 +25,7 @@ export class ControlContainerComponent implements OnInit {
     this.wordGameForm = new FormGroup({
       anagramWord: new FormControl(null, [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
       sourceWord: new FormControl(null, [Validators.required, Validators.min(5), Validators.max(5)]),
-      destWord: new FormControl(null, [Validators.required, Validators.min(5), Validators.max(5)]),
+      targetWord: new FormControl(null, [Validators.required, Validators.min(5), Validators.max(5)]),
     });
   }
 
@@ -49,11 +49,11 @@ export class ControlContainerComponent implements OnInit {
   }
 
   getWordChaines() {
-    this.actualSrcWord = this.wordGameForm.get('sourceWord')?.value;
-    this.actualDestWord = this.wordGameForm.get('destWord')?.value;
-    this.wordGameService.getWordChaines(this.actualSrcWord, this.actualDestWord).subscribe((res: any) => {
+    this.sourceWord = this.wordGameForm.get('sourceWord')?.value;
+    this.targetWord = this.wordGameForm.get('targetWord')?.value;
+    this.wordGameService.getWordChaines(this.sourceWord, this.targetWord).subscribe((res: any) => {
       this.wordChains = res.body.wordChaines;
-      this.wordGameService.moveResults({ source: this.actualSrcWord, target: this.actualDestWord, words: this.wordChains });
+      this.wordGameService.moveResults({ source: this.sourceWord, target: this.targetWord, words: this.wordChains });
     });
   }
 
