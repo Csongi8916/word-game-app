@@ -43,7 +43,7 @@ Split the terminal (you need 2 ps instances):
 ```
 cd server
 npm run build
-npm start
+npm run dev
 ```
 
 2. Terminal: Client:
