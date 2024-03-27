@@ -21,4 +21,13 @@ app.post('/anagram/', (req, res) => {
   });
 });
 
+app.post('/wordchain/', (req, res) => {
+  console.log('Req src: ' + req.body.source);
+  console.log('Req tar: ' + req.body.target);
+  // TODO: Implement the algoritm
+  res.status(200).json({
+    wordChaines: ['nyerő', 'nyers', 'nyárs', 'nyári', 'gyári']
+  });
+});
+
 app.listen(3000);

@@ -1,4 +1,5 @@
 export interface Result {
-  actualWord: string;
+  source: string;
+  target?: string;
   words: string[];
 }

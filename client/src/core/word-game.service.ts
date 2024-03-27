@@ -21,6 +21,15 @@ export class WordGameService {
     })
   }
 
+  getWordChaines(sorceWord: string, destWord: string): Observable<HttpResponse<string>> {
+    const postData = { source: sorceWord, target: destWord };
+    return this.http.post<string>('http://localhost:3000/wordchain/',
+    postData,
+    {
+      observe: 'response'
+    })
+  }
+
   moveResults(results: Result) {
     this.moveResultEmitter$.next(results);
   }
