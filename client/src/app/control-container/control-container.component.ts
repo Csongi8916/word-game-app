@@ -10,7 +10,7 @@ import { WordGameService } from './../../core/word-game.service';
 export class ControlContainerComponent implements OnInit {
 
   @Input() title: string;
-  @Input() isNeedDest: boolean;
+  @Input() neededTarget: boolean;
 
   wordGameForm: FormGroup;
   anagramWord: string = '';
@@ -30,12 +30,14 @@ export class ControlContainerComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (!this.isNeedDest) {
+    if (!this.isValidForm()) return;
+    if (!this.neededTarget) {
       this.getAnagrams();
     }
-    else if (this.isNeedDest) {
+    else if (this.neededTarget) {
       this.getWordChaines();
     }
+    this.wordGameForm.reset();
   }
 
   getAnagrams() {
@@ -53,6 +55,10 @@ export class ControlContainerComponent implements OnInit {
       this.wordChains = res.body.wordChaines;
       this.wordGameService.moveResults({ source: this.actualSrcWord, target: this.actualDestWord, words: this.wordChains });
     });
+  }
+
+  isValidForm() {
+    return this.wordGameForm.get('anagramWord').valid || this.neededTarget;
   }
 
 
