@@ -1,14 +1,13 @@
 <div class="form-container">
   <h2>{{ title }}</h2>
   <form [formGroup]="wordGameForm" (ngSubmit)="onSubmit()" class="form-group">
-    <label for="word">Forrás szó:</label>
-    <input
-      type="text"
-      id="source-word"
-      formControlName="sourceWord"
-      [ngClass]="isNeedDest ? 'word-chain-input' : ''"
-      class="form-control" />
+    <ng-container *ngIf="!isNeedDest">
+      <label for="word">Forrás szó:</label>
+      <input type="text" id="anagram-word" formControlName="anagramWord" class="form-control" />
+    </ng-container>
     <ng-container *ngIf="isNeedDest">
+      <label for="source-word">Forrás szó:</label>
+      <input type="text" id="source-word" formControlName="sourceWord" class="form-control word-chain-input" />
       <label for="dest-word">Cél szó:</label>
       <input type="text" id="dest-word" formControlName="destWord" class="form-control word-chain-input" />
     </ng-container>

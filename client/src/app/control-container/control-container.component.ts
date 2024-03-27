@@ -13,6 +13,7 @@ export class ControlContainerComponent implements OnInit {
   @Input() isNeedDest: boolean;
 
   wordGameForm: FormGroup;
+  anagramWord: string = '';
   actualSrcWord: string = '';
   actualDestWord: string = '';
   anagrams: string[] = [];
@@ -22,14 +23,13 @@ export class ControlContainerComponent implements OnInit {
   
   ngOnInit(): void {
     this.wordGameForm = new FormGroup({
+      anagramWord: new FormControl(null, [Validators.min(5), Validators.max(5)]),
       sourceWord: new FormControl(null, [Validators.min(5), Validators.max(5)]),
       destWord: new FormControl(null, [Validators.min(5), Validators.max(5)]),
     });
   }
 
   onSubmit(): void {
-    this.actualSrcWord = this.wordGameForm.get('sourceWord')?.value;
-    this.actualDestWord = this.wordGameForm.get('destWord')?.value;
     if (!this.isNeedDest) {
       this.getAnagrams();
     }
@@ -39,16 +39,18 @@ export class ControlContainerComponent implements OnInit {
   }
 
   getAnagrams() {
-    this.wordGameService.getAnagrams(this.actualSrcWord).subscribe((res: any) => {
+    this.anagramWord = this.wordGameForm.get('anagramWord')?.value;
+    this.wordGameService.getAnagrams(this.anagramWord).subscribe((res: any) => {
       this.anagrams = res.body.anagrams;
-      this.wordGameService.moveResults({ source: this.actualSrcWord, words: this.anagrams });
+      this.wordGameService.moveResults({ source: this.anagramWord, words: this.anagrams });
     });
   }
 
   getWordChaines() {
+    this.actualSrcWord = this.wordGameForm.get('sourceWord')?.value;
+    this.actualDestWord = this.wordGameForm.get('destWord')?.value;
     this.wordGameService.getWordChaines(this.actualSrcWord, this.actualDestWord).subscribe((res: any) => {
       this.wordChains = res.body.wordChaines;
-      debugger;
       this.wordGameService.moveResults({ source: this.actualSrcWord, target: this.actualDestWord, words: this.wordChains });
     });
   }
