@@ -10,10 +10,8 @@ import { Result } from 'src/types.model';
 })
 export class ResultContainerComponent implements OnInit, OnDestroy {
 
-  @Input() actualWord: string;
-
   private resultSub: Subscription;
-  results: string[] = [];
+  results: Result;
   isEmpty: boolean = false;
   isAlreadyUsed: boolean = false;
 
@@ -23,7 +21,7 @@ export class ResultContainerComponent implements OnInit, OnDestroy {
     this.resultSub = this.wordGameService.moveResultEmitter$.subscribe((results: Result) => {
       this.isEmpty = results.words.length === 0 ? true : false;
       this.isAlreadyUsed = true;
-      this.results = results.words;
+      this.results = results;
     });
   }
 

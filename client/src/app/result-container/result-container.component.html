@@ -1,8 +1,15 @@
 <div *ngIf="isAlreadyUsed" class="result-container">
-  <ng-container *ngFor="let result of results">
-    <p class="result-value">
-      {{ result }}
-    </p>
-  </ng-container>
+  <div class="result-header">
+    <h3>Forrás szó: {{ results.source }}</h3>
+    <h3>Cél szó: {{ results.target ?? '-' }}</h3>
+  </div>
+  <hr />
+  <div class="result-data">
+    <ng-container *ngFor="let word of results.words">
+      <p class="result-value">
+        {{ word }}
+      </p>
+    </ng-container>
+  </div>
   <p *ngIf="isEmpty">Nincs találat!</p>
 </div>
