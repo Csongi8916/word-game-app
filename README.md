@@ -1,12 +1,11 @@
 # Word Game App
 
-The users can give a five-letter word and they can get anagrammas and word chains of the given word.
+The users can give a five-letter word and they can get anagrams and word chains of the given word.
 
 # Table of contents:
 
 - [Pre-reqs](#pre-reqs)
 - [Getting started](#getting-started)
-- [Running](#Running)
 
 # Pre-reqs:
 
@@ -21,7 +20,7 @@ To build and run this app locally you will need a few things:
 - Clone the repository
 
 ```
-git clone https://github.com/Csongi8916/place-broker.git
+git clone https://github.com/Csongi8916/word-game-app.git
 ```
 
 - Install dependencies
@@ -36,7 +35,7 @@ npm install
 
 - Build and run the project
 
-Split the terminal (you need 2 ps instances):
+Split the terminal:
 
 1. Terminal: Server:
 

@@ -1,5 +1,5 @@
 {
-  "name": "leopoly-server",
+  "name": "word-game-server",
   "version": "1.0.0",
   "description": "",
   "main": "app.ts",
